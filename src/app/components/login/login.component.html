@@ -1,0 +1,22 @@
+<h1>hello</h1>
+
+<form action="" [formGroup]="credentials" (ngSubmit)="login()">
+  <div>
+    <label for="">Username</label>
+    <input type="text" formControlName="username" />
+  </div>
+
+  <div>
+    <label for="">Password</label>
+    <input type="password" formControlName="password" />
+  </div>
+
+  <div>
+    <button>login</button>
+  </div>
+</form>
+
+
+<div>
+  <button (click)="getAccount(1)">Get Account</button>
+</div>
