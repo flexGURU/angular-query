@@ -5,8 +5,8 @@ import {
   Account,
   LoginUserRequest,
   LoginUserResponse,
-} from '../types/types.interface';
-import { environment } from '../../environments/environment';
+} from '../../types/types.interface';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +27,7 @@ export class AuthService {
     console.log('Setting JWT:', value); // Debugging
 
     sessionStorage.setItem(this.key, value);
-    this.isUserLoggedIn.next(!!value)
-    
+    this.isUserLoggedIn.next(!!value);
   }
 
   get jwt(): string {
