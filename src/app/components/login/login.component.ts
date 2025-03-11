@@ -21,6 +21,7 @@ export class LoginComponent {
   account$: Account | null = null;
   // user: string;
   credentials: FormGroup;
+  
 
   constructor(private fb: FormBuilder) {
     this.credentials = this.fb.group({

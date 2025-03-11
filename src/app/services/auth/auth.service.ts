@@ -7,12 +7,13 @@ import {
   LoginUserResponse,
 } from '../../types/types.interface';
 import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   private readonly key = 'JWT-KEY';
   isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -20,7 +21,12 @@ export class AuthService {
   login(credentials: LoginUserRequest): Observable<LoginUserResponse> {
     return this.http
       .post<LoginUserResponse>(`${environment.BASEURL}/user/login`, credentials)
-      .pipe(tap((r) => (this.jwt = r.access_token)));
+      .pipe(
+        tap((response) => {
+          this.jwt = response.access_token;
+          this.router.navigateByUrl('/'); // Navigate after successful login
+        })
+      );
   }
 
   private set jwt(value: string) {

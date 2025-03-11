@@ -27,3 +27,10 @@ export interface Account {
   currency: number;
   created_at: Date;
 }
+
+export interface Users {
+  username: string;
+  full_name: string;
+  email: string;
+
+}
